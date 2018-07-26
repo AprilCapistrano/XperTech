@@ -8,20 +8,31 @@ import android.widget.Button;
 
 public class EnterCodeActivity extends AppCompatActivity {
 
-    Button btn_proceed, btn_cancel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entercode);
 
-        btn_proceed = (Button) findViewById(R.id.btn_enter_accNum);
+        //Cancel Button
+        Button btn_enter_cancel = (Button) findViewById(R.id.btn_enter_cancel);
 
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
+        btn_enter_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+                startActivity(new Intent(EnterCodeActivity.this, SignUpActivity.class));
             }
         });
+
+        //Enter Button
+        Button btn_enter_accNum = (Button) findViewById(R.id.btn_enter_accNum);
+
+        btn_enter_accNum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EnterCodeActivity.this, DeviceSummaryActivity.class));
+            }
+        });
+
+
     }
 }

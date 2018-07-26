@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.company.xpertech.xpertech.DeviceSummaryActivity">
+
+    <TextView
+        android:id="@+id/text_deviceName"
+        android:layout_width="351dp"
+        android:layout_height="33dp"
+        android:text="Set Top Box (STB)"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ScrollView
+        android:id="@+id/scroll_deviceInfo"
+        style="@android:style/Widget.Material.ScrollView"
+        android:layout_width="348dp"
+        android:layout_height="434dp"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="58dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:text="Back"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="506dp" />
+
+    <Button
+        android:id="@+id/btn_proceed"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:text="Proceed"
+        tools:layout_editor_absoluteX="198dp"
+        tools:layout_editor_absoluteY="506dp" />
+
+</android.support.constraint.ConstraintLayout>
