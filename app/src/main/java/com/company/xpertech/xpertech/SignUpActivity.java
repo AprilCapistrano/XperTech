@@ -98,8 +98,7 @@ public class SignUpActivity extends AppCompatActivity{
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> qrcodes = detections.getDetectedItems();
-                if(qrcodes.size() != 0)
-                {
+                if(qrcodes.size() != 0) {
                     btn_entercode.post(new Runnable() {
                         @Override
                         public void run() {
@@ -109,7 +108,9 @@ public class SignUpActivity extends AppCompatActivity{
                             btn_entercode.setText(qrcodes.valueAt(0).displayValue);
                         }
                     });
-                }
+                }//else {
+                 //   startActivity(new Intent(SignUpActivity.this, DeviceSummaryActivity.class));
+                //}
             }
         });
 

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context="com.company.xpertech.xpertech.DeviceSummaryActivity">
+
 
     <TextView
         android:id="@+id/text_deviceName"
@@ -15,20 +17,27 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_above="@+id/scroll_deviceInfo"
+        android:layout_alignStart="@+id/scroll_deviceInfo"
+        android:layout_marginBottom="17dp" />
 
     <ScrollView
         android:id="@+id/scroll_deviceInfo"
         style="@android:style/Widget.Material.ScrollView"
-        android:layout_width="348dp"
+        android:layout_width="349dp"
         android:layout_height="434dp"
         tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="58dp">
+        tools:layout_editor_absoluteY="58dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+
+        </LinearLayout>
     </ScrollView>
 
     <Button
@@ -37,7 +46,10 @@
         android:layout_height="45dp"
         android:text="Back"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="506dp" />
+        tools:layout_editor_absoluteY="506dp"
+        android:layout_alignBaseline="@+id/btn_proceed"
+        android:layout_alignBottom="@+id/btn_proceed"
+        android:layout_alignStart="@+id/scroll_deviceInfo" />
 
     <Button
         android:id="@+id/btn_proceed"
@@ -45,6 +57,9 @@
         android:layout_height="45dp"
         android:text="Proceed"
         tools:layout_editor_absoluteX="198dp"
-        tools:layout_editor_absoluteY="506dp" />
+        tools:layout_editor_absoluteY="506dp"
+        android:layout_marginBottom="13dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/scroll_deviceInfo" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

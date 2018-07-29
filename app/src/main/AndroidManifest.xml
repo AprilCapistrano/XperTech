@@ -35,7 +35,8 @@
 
         <activity android:name=".TroubleshootActivity" />
         <activity android:name=".EnterCodeActivity" />
-        <activity android:name=".DeviceSummaryActivity"></activity>
+        <activity android:name=".DeviceSummaryActivity" />
+        <activity android:name=".TroubleshootItemActivity"></activity>
     </application>
 
 </manifest>
