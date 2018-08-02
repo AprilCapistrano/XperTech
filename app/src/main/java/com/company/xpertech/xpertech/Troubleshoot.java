@@ -7,6 +7,16 @@ package com.company.xpertech.xpertech;
 public class Troubleshoot {
 
     String title;
+    int position;
+
+    public Troubleshoot(){}
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     public Troubleshoot(String title){
         this.title = title;
@@ -19,4 +29,6 @@ public class Troubleshoot {
     public void setTitle(String title) {
         this.title = title;
     }
+
+
 }

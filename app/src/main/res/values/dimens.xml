@@ -8,4 +8,5 @@
     <dimen name="intro_padding">50dp</dimen>
     <dimen name="content_padding">30dp</dimen>
     <dimen name="item_padding">15dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>

@@ -64,7 +64,9 @@ public class ListViewAdapter extends BaseAdapter{
         view.setTag(holder);
 
         //set results to list view
+        Troubleshoot tb  =  new Troubleshoot();
         holder.title.setText(troubleshootList1.get(position).getTitle());
+        tb.setPosition(troubleshootList1.indexOf(troubleshootList1.get(position).getTitle()));
 
         //listen for listview item click
         view.setOnClickListener(new View.OnClickListener() {
