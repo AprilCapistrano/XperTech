@@ -33,10 +33,14 @@
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />
 
-        <activity android:name=".TroubleshootActivity" />
+        <activity
+            android:name=".TroubleshootActivity"
+            android:label="@string/menu_troubleshoot" />
         <activity android:name=".EnterCodeActivity" />
         <activity android:name=".DeviceSummaryActivity" />
-        <activity android:name=".TroubleshootItemActivity"></activity>
+        <activity
+            android:name=".TroubleshootItemActivity"
+            android:label="@string/menu_troubleshoot" />
     </application>
 
 </manifest>

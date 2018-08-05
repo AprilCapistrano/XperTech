@@ -11,13 +11,17 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Troubleshoot" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_selfInstall"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Self Install" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_userManual"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="User Manual" />
+        <item
+            android:id="@+id/nav_remoteControl"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Remote Control" />
     </group>
 
     <item android:title="Communicate">

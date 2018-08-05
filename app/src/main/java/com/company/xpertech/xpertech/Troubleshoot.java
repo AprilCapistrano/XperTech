@@ -8,6 +8,7 @@ public class Troubleshoot {
 
     String title;
     int position;
+    public int id;
 
     public Troubleshoot(){}
     public int getPosition() {

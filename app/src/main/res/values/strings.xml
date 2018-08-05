@@ -31,4 +31,7 @@
     <string name="troubleshoot_01_06">Press and hold the OK button and Power button simultaneously for 3-5 seconds until the LED blinks 2x</string>
     <string name="troubleshoot_01_07">Press 9-8-2 on the remote to lock it for RCU programming, LED should blink 2x</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

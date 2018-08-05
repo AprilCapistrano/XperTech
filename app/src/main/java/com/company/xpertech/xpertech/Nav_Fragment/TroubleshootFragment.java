@@ -1,4 +1,4 @@
-package com.company.xpertech.xpertech;
+package com.company.xpertech.xpertech.Nav_Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,8 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.company.xpertech.xpertech.dummy.DummyContent;
-import com.company.xpertech.xpertech.dummy.DummyContent.DummyItem;
+import com.company.xpertech.xpertech.R;
+import com.company.xpertech.xpertech.Troubleshoot;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * A fragment representing a list of Items.
@@ -26,6 +31,11 @@ public class TroubleshootFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+
+    ArrayList <String> troubleshootTitle;
+    ArrayList <Troubleshoot> troubleshootList;
+
+    RecyclerView recyclerView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -51,24 +61,59 @@ public class TroubleshootFragment extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_troubleshoot_list, container, false);
+
+        try {
+            BufferedWriter br = new BufferedWriter(new FileWriter(""));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        final View view = inflater.inflate(R.layout.fragment_troubleshoot_list, container, false);
+
+        troubleshootTitle = new ArrayList<String>();
+        troubleshootList = new ArrayList<Troubleshoot>();
+
+        // list of titles
+        troubleshootTitle.add("Set Top Box (STB) Configuration");
+        troubleshootTitle.add("TV Configuration (via Simple Set Button)");
+        troubleshootTitle.add("My set top box (STB) is not Booting Up");
+        troubleshootTitle.add("My TV has No Audio and/or Video Output");
+        troubleshootTitle.add("My TV is Showing \"Technical Problem\" Error/Pixilated Pictures/ON and OFF Programming");
+        troubleshootTitle.add("My TV Screen is Showing an Error Code - E1 / E2 / E11 / E4 / E6 / E14");
+
+        for (int i = 0; i < troubleshootTitle.size(); i++){
+            Troubleshoot trbl = new Troubleshoot(troubleshootTitle.get(i));
+            troubleshootList.add(trbl);
+        }
+
 
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyTroubleshootRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyTroubleshootRecyclerViewAdapter(troubleshootList, mListener));
         }
+
+
+//        view.setOnClickListener((new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        int itemPosition = recyclerView.getChildAdapterPosition(view);
+//                        String item = troubleshootTitle.get(itemPosition);
+//                        Toast.makeText(getContext(), item, Toast.LENGTH_SHORT).show();
+//                    }
+//                }));
+
         return view;
     }
 
@@ -102,6 +147,6 @@ public class TroubleshootFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Troubleshoot item);
     }
 }
