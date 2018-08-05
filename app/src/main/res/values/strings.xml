@@ -14,7 +14,9 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_troubleshoot">Troubleshoot</string>
+    <string name="menu_manual">User Manual</string>
     <string name="menu_self_install">Self-Install Guide</string>
+    <string name="menu_remote">Remote Control Assistant</string>
 
     <string name="btn_enter_code">PROCEED</string>
     <string name="btn_cancel">CANCEL</string>

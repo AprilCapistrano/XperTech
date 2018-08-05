@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.company.xpertech.xpertech.R;
@@ -49,10 +50,6 @@ public class TroubleeshootItemFragment extends Fragment {
     public static TroubleeshootItemFragment newInstance(String param1, String param2) {
         TroubleeshootItemFragment fragment = new TroubleeshootItemFragment();
         Bundle args = new Bundle();
-
-
-
-
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
@@ -74,6 +71,14 @@ public class TroubleeshootItemFragment extends Fragment {
         data = bundle.getString("data");
         TextView txt = (TextView) view.findViewById(R.id.item_text);
         txt.setText(data);
+
+        Button btn_done = (Button) view.findViewById(R.id.btn_done);
+        btn_done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.content_main, new HomeFragment()).commit();
+            }
+        });
     }
 
     @Override

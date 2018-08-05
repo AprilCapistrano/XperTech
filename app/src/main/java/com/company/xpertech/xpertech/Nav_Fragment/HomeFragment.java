@@ -3,12 +3,15 @@ package com.company.xpertech.xpertech.Nav_Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.company.xpertech.xpertech.R;
+import com.company.xpertech.xpertech.Troubleshoot;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +21,7 @@ import com.company.xpertech.xpertech.R;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements TroubleshootFragment.OnListFragmentInteractionListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,6 +35,19 @@ public class HomeFragment extends Fragment {
 
     public HomeFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Button btn_troubleshoot = (Button) view.findViewById(R.id.btn_troubleshoot);
+        btn_troubleshoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.content_main, new TroubleshootFragment()).commit();
+            }
+        });
     }
 
     /**
@@ -60,13 +76,7 @@ public class HomeFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-//        Button btn_troubleshoot = (Button) btn_troubleshoot.findViewById();
-//        btn_troubleshoot.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(getActivity(), TroubleshootActivity.class));
-//            }
-//        });
+
     }
 
     @Override
@@ -98,6 +108,11 @@ public class HomeFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onListFragmentInteraction(Troubleshoot item) {
+
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.company.xpertech.xpertech.Nav_Fragment;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -19,6 +20,8 @@ import com.company.xpertech.xpertech.Troubleshoot;
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.droidsonroids.gif.GifImageView;
+
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
  * specified {@link TroubleshootFragment.OnListFragmentInteractionListener}.
@@ -36,6 +39,7 @@ public class MyTroubleshootRecyclerViewAdapter extends RecyclerView.Adapter<MyTr
     ArrayList <Troubleshoot> troubleshootList;
     Context ctx;
     String steps = "Steps: \n";
+    Drawable gif = null;
 
     public MyTroubleshootRecyclerViewAdapter(List<Troubleshoot> items, TroubleshootFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
@@ -83,7 +87,6 @@ public class MyTroubleshootRecyclerViewAdapter extends RecyclerView.Adapter<MyTr
 //                }
 
 //                Toast.makeText(ctx, steps, Toast.LENGTH_SHORT).show();
-
                 steps = getProcess(position);
                 bundle.putString("data", steps);
                 TroubleeshootItemFragment tf = new TroubleeshootItemFragment();
@@ -116,6 +119,7 @@ public class MyTroubleshootRecyclerViewAdapter extends RecyclerView.Adapter<MyTr
         public final TextView mIdView;
         public final TextView mContentView;
         public Troubleshoot mItem;
+        public GifImageView gifImageView;
 
 //        ArrayList<Troubleshoot> tItem = new ArrayList<Troubleshoot>();
 //        Context ctx;
@@ -125,6 +129,7 @@ public class MyTroubleshootRecyclerViewAdapter extends RecyclerView.Adapter<MyTr
 //            this.tItem = tItem;
 //            this.ctx = ctx;
             mView = view;
+            gifImageView = (GifImageView) view.findViewById(R.id.gif_imageView);
             mIdView = (TextView) view.findViewById(R.id.id);
             mContentView = (TextView) view.findViewById(R.id.content);
         }
@@ -139,6 +144,7 @@ public class MyTroubleshootRecyclerViewAdapter extends RecyclerView.Adapter<MyTr
     private String getProcess(int position){
         switch(position){
             case 0:
+                //holder.gifImageView.setBackgroundResource(R.drawable.greenled);
                 return "1.) On the Remote, press and hold OK button and Power button simultaneously until LED blinks 2x\n" +
                         "2.) Press 9-8-2 on the remote to unlock it for RCU programming, LED should blink 4x\n" +
                         "3.)\tPress and hold the OK button and Power button again simultaneously for 3-5 seconds until the LED blinks 2x\n" +
