@@ -9,19 +9,23 @@
         <item
             android:id="@+id/nav_troubleshoot"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Troubleshoot" />
+            android:title="@string/menu_troubleshoot" />
         <item
             android:id="@+id/nav_selfInstall"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Self Install" />
+            android:title="@string/menu_self_install" />
         <item
             android:id="@+id/nav_userManual"
             android:icon="@drawable/ic_menu_manage"
-            android:title="User Manual" />
+            android:title="@string/menu_manual" />
         <item
             android:id="@+id/nav_remoteControl"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Remote Control Assistant" />
+            android:title="@string/menu_remote" />
+        <item
+            android:id="@+id/nav_package"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/menu_package" />
     </group>
 
     <item android:title="Quick Assist">

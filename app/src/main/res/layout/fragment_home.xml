@@ -48,6 +48,20 @@
                 android:layout_weight="1"
                 android:text="@string/menu_remote"/>
         </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200px"
+            android:weightSum="2">
+            <Button
+                android:id="@+id/btn_package"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/menu_package"/>
+
+        </LinearLayout>
     </LinearLayout>
 
 

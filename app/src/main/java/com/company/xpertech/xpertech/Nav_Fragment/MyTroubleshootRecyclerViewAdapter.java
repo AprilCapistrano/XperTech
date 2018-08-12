@@ -9,21 +9,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.company.xpertech.xpertech.ListViewAdapter;
 import com.company.xpertech.xpertech.R;
-import com.company.xpertech.xpertech.TroubleShoot_List.DummyContent.DummyItem;
 import com.company.xpertech.xpertech.Troubleshoot;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pl.droidsonroids.gif.GifImageView;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link } and makes a call to the
  * specified {@link TroubleshootFragment.OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
@@ -33,13 +29,10 @@ public class MyTroubleshootRecyclerViewAdapter extends RecyclerView.Adapter<MyTr
     private final List<Troubleshoot> mValues;
     private final TroubleshootFragment.OnListFragmentInteractionListener mListener;
 
-    ListView list;
-    ListViewAdapter adapter;
-    ArrayList<String> troubleshootTitle;
-    ArrayList <Troubleshoot> troubleshootList;
     Context ctx;
     String steps = "Steps: \n";
     Drawable gif = null;
+    FragmentActivity actvty;
 
     public MyTroubleshootRecyclerViewAdapter(List<Troubleshoot> items, TroubleshootFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
@@ -50,6 +43,7 @@ public class MyTroubleshootRecyclerViewAdapter extends RecyclerView.Adapter<MyTr
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(ctx = parent.getContext())
                 .inflate(R.layout.fragment_troubleshoot, parent, false);
+
         return new ViewHolder(view);
     }
 
@@ -65,33 +59,15 @@ public class MyTroubleshootRecyclerViewAdapter extends RecyclerView.Adapter<MyTr
             @Override
             public void onClick(View v) {
 
-                FragmentActivity actvty = (FragmentActivity) ctx;
+                actvty = (FragmentActivity) ctx;
                 Bundle bundle = new Bundle();
                 String line = null;
-
-//                Toast.makeText(ctx, mValues.get(position).getTitle() + " " + position, Toast.LENGTH_SHORT).show();
-
-//                try {
-//                    BufferedWriter bw = new BufferedWriter(new FileWriter("SameText.txt"));
-//                    bw.write("Sgsm,gmhgshhm");
-//                    BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\USER\\Desktop\\Xpertech\\app\\src\\main\\java\\com\\company\\xpertech\\xpertech\\TroubleShoot_List\\STB_1.txt"));
-//                    line = br.readLine();
-//                    while(line != null){
-//                        steps += line + "\n";
-//                        line = br.readLine();
-//                    }
-//                } catch (FileNotFoundException e) {
-//                    e.printStackTrace();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-
-//                Toast.makeText(ctx, steps, Toast.LENGTH_SHORT).show();
                 steps = getProcess(position);
+                bundle.putInt("position",position);
                 bundle.putString("data", steps);
-                TroubleeshootItemFragment tf = new TroubleeshootItemFragment();
-                tf.setArguments(bundle);
-                actvty.getSupportFragmentManager().beginTransaction().replace(R.id.content_main, tf).commit();
+                IntroFragment introf = new IntroFragment();
+                introf.setArguments(bundle);
+                actvty.getSupportFragmentManager().beginTransaction().replace(R.id.content_main, introf).commit();
 
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the

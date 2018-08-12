@@ -31,6 +31,7 @@ public class TroubleeshootItemFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private static String data = null;
+    private static int position = 0;
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,6 +70,7 @@ public class TroubleeshootItemFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
         data = bundle.getString("data");
+        position = bundle.getInt("position");
         TextView txt = (TextView) view.findViewById(R.id.item_text);
         txt.setText(data);
 
@@ -76,7 +78,7 @@ public class TroubleeshootItemFragment extends Fragment {
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.content_main, new HomeFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.content_main, new TroubleshootConfirmationFragment()).commit();
             }
         });
     }

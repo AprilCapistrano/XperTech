@@ -1,6 +1,7 @@
 package com.company.xpertech.xpertech;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -105,7 +107,35 @@ public class SignUpActivity extends AppCompatActivity{
                             //Create vibrate
                             /*Vibrator vibrator = (Vibrator)getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
                             vibrator.vibrate(1000);*/
-                            btn_entercode.setText(qrcodes.valueAt(0).displayValue);
+                            final Dialog d = new Dialog(getApplicationContext());
+                            d.setContentView(R.layout.activity_device_summary);
+
+                            TextView qr_details = (TextView) d.findViewById(R.id.qr_details);
+
+                            qr_details.setText(qrcodes.valueAt(0).displayValue);
+
+                            //Back Button
+                            Button btn_back = (Button) d.findViewById(R.id.btn_back);
+
+                            btn_back.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    d.dismiss();
+                                }
+                            });
+
+                            //Proceed button
+                            Button btn_proceed = (Button) d.findViewById(R.id.btn_proceed);
+
+                            btn_proceed.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    finish();
+                                    startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+                                }
+                            });
+
+                            d.show();
                         }
                     });
                 }//else {

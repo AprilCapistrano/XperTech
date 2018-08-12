@@ -15,8 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.company.xpertech.xpertech.Nav_Fragment.HomeFragment;
+import com.company.xpertech.xpertech.Nav_Fragment.IntroFragment;
 import com.company.xpertech.xpertech.Nav_Fragment.ManualFragment;
+import com.company.xpertech.xpertech.Nav_Fragment.PackagesFragment;
 import com.company.xpertech.xpertech.Nav_Fragment.TroubleeshootItemFragment;
+import com.company.xpertech.xpertech.Nav_Fragment.TroubleshootConfirmationFragment;
 import com.company.xpertech.xpertech.Nav_Fragment.TroubleshootFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -24,7 +27,10 @@ public class MainActivity extends AppCompatActivity
         TroubleeshootItemFragment.OnFragmentInteractionListener,
         ManualFragment.OnFragmentInteractionListener,
         HomeFragment.OnFragmentInteractionListener,
-        NavigationView.OnNavigationItemSelectedListener {
+        IntroFragment.OnFragmentInteractionListener,
+        TroubleshootConfirmationFragment.OnFragmentInteractionListener,
+        NavigationView.OnNavigationItemSelectedListener,
+        PackagesFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +114,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new HomeFragment()).commit();
+                break;
+            case R.id.nav_package:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new PackagesFragment()).commit();
                 break;
         }
 
