@@ -1,7 +1,6 @@
 package com.company.xpertech.xpertech.Nav_Fragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,28 +18,22 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link PackagesFragment.OnFragmentInteractionListener} interface
+ * {@link PackagesFragment.OnListFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link PackagesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class PackagesFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
+    private OnListFragmentInteractionListener mListener;
 
     ArrayList <String> packageTitle;
+    ArrayList <String> packageChannel;
     ArrayList<Packages> packagesList;
 
     RecyclerView recyclerView;
@@ -82,21 +75,16 @@ public class PackagesFragment extends Fragment {
 
         final View view = inflater.inflate(R.layout.fragment_packages_list, container, false);
         packageTitle = new ArrayList<String>();
+        packageChannel = new ArrayList<String>();
         packagesList = new ArrayList<Packages>();
-        Packages packages = new Packages();
 
         packageTitle.add("Crystal Package");
         packageTitle.add("Diamond Package");
-        for (int i = 0; i < packagesList.size(); i++){
-            packages.setTitle(packageTitle.get(i));
-            packagesList.add(packages);
-        }
 
-        if(packageTitle.get(0).equals("Crystal Package")){
-            packages.setNumOfChannel("More than 100 channels");
-            packagesList.add(packages);
-        }else{
-            packages.setNumOfChannel("Crystal Package + 17 Premium Channels");
+        packageChannel.add("More than 100 channels");
+        packageChannel.add("Crystal Package + 17 Premium Channels");
+        for (int i = 0; i < packageTitle.size(); i++){
+            Packages packages = new Packages(packageTitle.get(i), packageChannel.get(i));
             packagesList.add(packages);
         }
 
@@ -116,17 +104,17 @@ public class PackagesFragment extends Fragment {
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    /*public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.OnListFragmentInteractionListener(uri);
         }
-    }
+    }*/
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnListFragmentInteractionListener) {
+            mListener = (OnListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -149,8 +137,8 @@ public class PackagesFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onListFragmentInteraction(Packages item);
     }
 }

@@ -18,6 +18,7 @@ import com.company.xpertech.xpertech.Nav_Fragment.HomeFragment;
 import com.company.xpertech.xpertech.Nav_Fragment.IntroFragment;
 import com.company.xpertech.xpertech.Nav_Fragment.ManualFragment;
 import com.company.xpertech.xpertech.Nav_Fragment.PackagesFragment;
+import com.company.xpertech.xpertech.Nav_Fragment.Sub_Manual_Fragment;
 import com.company.xpertech.xpertech.Nav_Fragment.TroubleeshootItemFragment;
 import com.company.xpertech.xpertech.Nav_Fragment.TroubleshootConfirmationFragment;
 import com.company.xpertech.xpertech.Nav_Fragment.TroubleshootFragment;
@@ -30,7 +31,8 @@ public class MainActivity extends AppCompatActivity
         IntroFragment.OnFragmentInteractionListener,
         TroubleshootConfirmationFragment.OnFragmentInteractionListener,
         NavigationView.OnNavigationItemSelectedListener,
-        PackagesFragment.OnFragmentInteractionListener{
+        PackagesFragment.OnListFragmentInteractionListener,
+        Sub_Manual_Fragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +135,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onListFragmentInteraction(Troubleshoot item) {
+
+    }
+
+    @Override
+    public void onListFragmentInteraction(Packages item) {
 
     }
 }

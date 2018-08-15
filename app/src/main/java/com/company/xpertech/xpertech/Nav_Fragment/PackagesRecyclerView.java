@@ -2,6 +2,7 @@ package com.company.xpertech.xpertech.Nav_Fragment;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,20 +20,20 @@ import java.util.List;
  * Created by Skylar Gail on 8/12/2018.
  */
 
-public class PackagesRecyclerView extends RecyclerView.Adapter<PackagesRecyclerView.ViewHolder> implements PackagesFragment.OnFragmentInteractionListener {
+public class PackagesRecyclerView extends RecyclerView.Adapter<PackagesRecyclerView.ViewHolder> implements ChannelFragment.OnFragmentInteractionListener{
 
     private final List<Packages> mPackages;
-    private final PackagesFragment.OnFragmentInteractionListener mListener;
+    private final PackagesFragment.OnListFragmentInteractionListener mListener;
     private Context ctx;
     FragmentActivity activity;
 
-    public PackagesRecyclerView(List<Packages> mPackages, PackagesFragment.OnFragmentInteractionListener mListener) {
+    public PackagesRecyclerView(List<Packages> mPackages, PackagesFragment.OnListFragmentInteractionListener listener) {
         this.mPackages = mPackages;
-        this.mListener = mListener;
+        this.mListener = listener;
     }
 
     @Override
-    public PackagesRecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(ctx = parent.getContext())
                 .inflate(R.layout.fragment_packages, parent, false);
 
@@ -40,18 +41,37 @@ public class PackagesRecyclerView extends RecyclerView.Adapter<PackagesRecyclerV
     }
 
     @Override
-    public void onBindViewHolder(PackagesRecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final PackagesRecyclerView.ViewHolder holder, final int position) {
         holder.mTitleView.setText(mPackages.get(position).getTitle());
         holder.mChannelView.setText(mPackages.get(position).getNumOfChannel());
         holder.mButtonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 activity = (FragmentActivity) ctx;
+                Bundle bundle = new Bundle();
+                String packages = getPackage(position);
+                bundle.putString("package",   packages);
                 ChannelFragment channelf = new ChannelFragment();
+                channelf.setArguments(bundle);
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.content_main, channelf).commit();
 
+                if (null != mListener) {
+                    // Notify the active callbacks interface (the activity, if the
+                    // fragment is attached to one) that an item has been selected.
+                    mListener.onListFragmentInteraction(holder.mItem);
+                }
             }
         });
+    }
+
+    public String getPackage(int position){
+        switch(position) {
+            case 0:
+                return ("Crystal Package");
+            case 1:
+                return ("Diamond Package");
+        }
+        return "";
     }
 
     @Override
@@ -70,6 +90,7 @@ public class PackagesRecyclerView extends RecyclerView.Adapter<PackagesRecyclerV
         public final TextView mTitleView;
         public final TextView mChannelView;
         public final Button mButtonView;
+        public Packages mItem;
 
 
         public ViewHolder(View itemView) {

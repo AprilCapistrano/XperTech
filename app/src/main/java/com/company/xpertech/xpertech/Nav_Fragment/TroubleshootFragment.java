@@ -13,9 +13,6 @@ import android.view.ViewGroup;
 import com.company.xpertech.xpertech.R;
 import com.company.xpertech.xpertech.Troubleshoot;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -68,11 +65,6 @@ public class TroubleshootFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        try {
-            BufferedWriter br = new BufferedWriter(new FileWriter(""));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         final View view = inflater.inflate(R.layout.fragment_troubleshoot_list, container, false);
 
         troubleshootTitle = new ArrayList<String>();

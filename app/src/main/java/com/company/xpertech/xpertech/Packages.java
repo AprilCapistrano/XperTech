@@ -12,6 +12,14 @@ public class Packages {
     double monthSubPerExt;
     double digitalBox;
 
+    public Packages(String title){
+        this.title = title;
+    }
+    public Packages(String title, String numOfChannel) {
+        this.title = title;
+        this.numOfChannel = numOfChannel;
+    }
+
     public double getMonthSubPerMain() {
         return monthSubPerMain;
     }
@@ -38,9 +46,6 @@ public class Packages {
 
     public String getTitle() {
         return title;
-    }
-
-    public Packages() {
     }
 
     public void setTitle(String title) {

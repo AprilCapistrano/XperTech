@@ -4,11 +4,16 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.company.xpertech.xpertech.Channels;
 import com.company.xpertech.xpertech.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,12 +26,14 @@ import com.company.xpertech.xpertech.R;
 public class ChannelFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private List<String> crystal_channelTitle;
+    private List<String> diamond_channelTitle;
+    private List<Integer> crystal_channelNumber;
+    private List<Integer> diamond_channelNumber;
+    private List<Channels> crystal_channel_list;
+    private List<Channels> diamond_channel_list;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private RecyclerView recyclerView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -46,8 +53,6 @@ public class ChannelFragment extends Fragment {
     public static ChannelFragment newInstance(String param1, String param2) {
         ChannelFragment fragment = new ChannelFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,8 +61,7 @@ public class ChannelFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -65,7 +69,114 @@ public class ChannelFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_channel, container, false);
+        final View view = inflater.inflate(R.layout.fragment_channel, container, false);
+
+        Bundle bundle = getArguments();
+        String packages = bundle.getString("package");
+
+
+        crystal_channelTitle = new ArrayList<String>();
+        diamond_channelTitle = new ArrayList<String>();
+        crystal_channelNumber = new ArrayList<Integer>();
+        diamond_channelNumber = new ArrayList<Integer>();
+        crystal_channel_list = new ArrayList<Channels>();
+        diamond_channel_list = new ArrayList<Channels>();
+
+        crystal_channelTitle.add("ABS-CBN");
+        crystal_channelTitle.add("PTV");
+        crystal_channelTitle.add("TV5");
+        crystal_channelTitle.add("COMMUNITY CHANNEL");
+        crystal_channelTitle.add("GMA 7");
+        crystal_channelTitle.add("CINEMA ONE");
+        crystal_channelTitle.add("ISLAND LIVING CHANNEL");
+        crystal_channelTitle.add("JEEPNEY TV");
+        crystal_channelTitle.add("GNN");
+        crystal_channelTitle.add("IBC 13");
+        crystal_channelTitle.add("PAY-PER-VIEW");
+        crystal_channelTitle.add("HOPE INTERNATIONAL");
+        crystal_channelTitle.add("CNN PHILIPPINES");
+        crystal_channelTitle.add("GMA NEWS TV");
+        crystal_channelTitle.add("SPORTS + ACTION");
+        crystal_channelTitle.add("DZMM TELERADIO");
+        crystal_channelTitle.add("DZRH NEWS");
+        crystal_channelTitle.add("KNOWLEDGE CHANNEL");
+        crystal_channelTitle.add("LIVING ASIA");
+        crystal_channelTitle.add("DIVA");
+        crystal_channelTitle.add("HBO");
+        crystal_channelTitle.add("FOX MOVIES");
+        crystal_channelTitle.add("CINEMAX");
+        crystal_channelTitle.add("LOTUS MACAU");
+        crystal_channelTitle.add("FOX FAMILY MOVIES");
+        crystal_channelTitle.add("AKSYON TV");
+        crystal_channelTitle.add("FOX LIFE");
+        crystal_channelTitle.add("WARNER TV");
+        crystal_channelTitle.add("CARTOON NETWORK");
+        crystal_channelTitle.add("YEYI");
+        crystal_channelTitle.add("JACK TV");
+        crystal_channelTitle.add("ANIMAX");
+        crystal_channelTitle.add("DISNEY CHANNEL");
+        crystal_channelTitle.add("NICKELODEON");
+        crystal_channelTitle.add("SOLAR SPORTS");
+        crystal_channelTitle.add("FOX SPORTS");
+        crystal_channelTitle.add("FOX SPORTS 2");
+        crystal_channelTitle.add("BTV");
+        crystal_channelTitle.add("TRT WORLD");
+        crystal_channelTitle.add("AKLASS  TWO");
+        crystal_channelTitle.add("DUBAI SPORTS");
+        crystal_channelTitle.add("I24 NEWS");
+        crystal_channelTitle.add("CNN INTERNATIONAL");
+        crystal_channelTitle.add("BBC");
+        crystal_channelTitle.add("CHANNEL NEWS ASIA");
+        crystal_channelTitle.add("BLOOMBERG");
+        crystal_channelTitle.add("AL JAZEERA INT'L");
+        crystal_channelTitle.add("ANC");
+        crystal_channelTitle.add("CGTN");
+
+
+        diamond_channelTitle.add("TVN");
+        diamond_channelTitle.add("FOX CHANNEL");
+        diamond_channelTitle.add("FOX NEWS");
+        diamond_channelTitle.add("FOX CRIME");
+        diamond_channelTitle.add("FX");
+        diamond_channelTitle.add("ANIMAL PLANET");
+        diamond_channelTitle.add("DISCOVERY WORLD");
+        diamond_channelTitle.add("SETANTA SPORTS");
+        diamond_channelTitle.add("SONY CHANNEL");
+        diamond_channelTitle.add("DISNEY JUNIOR");
+        diamond_channelTitle.add("HISTORY");
+        diamond_channelTitle.add("FYI,");
+        diamond_channelTitle.add("TRU TV");
+        diamond_channelTitle.add("AMC");
+        diamond_channelTitle.add("E!");
+        diamond_channelTitle.add("OUTDOOR CHANNEL");
+        diamond_channelTitle.add("NBA PREMIUM TV");
+
+        for (int i = 0; i < crystal_channelTitle.size(); i++){
+            Channels channels = new Channels(crystal_channelTitle.get(i));
+            crystal_channel_list.add(channels);
+        }
+        for (int i = 0; i < diamond_channelTitle.size(); i++){
+            Channels channels = new Channels(diamond_channelTitle.get(i));
+            diamond_channel_list.add(channels);
+        }
+        if(packages.equalsIgnoreCase(crystal_channelTitle.get(0))){
+            // Set the adapter
+            if (view instanceof RecyclerView) {
+                Context context = view.getContext();
+                recyclerView = (RecyclerView) view;
+                recyclerView.setAdapter(new ChannelRecyclerView(crystal_channel_list, mListener));
+            }
+        }else {
+            // Set the adapter
+            if (view instanceof RecyclerView) {
+                Context context = view.getContext();
+                recyclerView = (RecyclerView) view;
+                recyclerView.setAdapter(new ChannelRecyclerView(diamond_channel_list, mListener));
+            }
+        }
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
